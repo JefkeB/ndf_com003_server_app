@@ -1,0 +1,2 @@
+#!/bin/sh
+../edbg/edbg-master/edbg -s 0 -tsamd51 -x 100
