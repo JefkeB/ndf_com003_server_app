@@ -1,0 +1,217 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "[PC->",
+            "type": "shell",
+            "command": "echo PC stuff to the right of this"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "rm -r build"
+        },
+        {
+            "label": "cmake",
+            "type": "shell",
+            "command": "cmake",
+            "args" : [ 
+                "-S",
+                ".",
+                "-B",
+                "build",
+                "-GNinja",
+                "-DTARGET_PC=ON",
+                "-DTARGET_DEBUG=ON"
+            ],
+            "options": {
+                "tasksHere": {
+                    "display": true
+                }
+            }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cmake",
+            "args" : [ 
+                "--build",
+                "build"
+            ]
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "cd ./build;./collector;cd -",
+            "command_": "cd ./build;pwd;ls -al;./collector;cd -"
+        },
+
+
+        {
+            "label": "[Remote->",
+            "type": "shell",
+            "command": "echo 'remote (cross compile) stuff to right of this'"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "rm -r build_cross"
+        },
+        {
+            "label": "cmake",
+            "type": "shell",
+            "command": "cmake",
+            "args" : [ 
+                "-S",
+                ".",
+                "-B",
+                "build_cross",
+                "-GNinja",
+                "-DTARGET_RPI=ON",
+                "-DTARGET_DEBUG=OFF"
+            ],
+            "options": {
+                "tasksHere": {
+                    "display": true
+                }
+            }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cmake",
+            "args" : [ 
+                "--build",
+                "build_cross"
+            ]
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "./build_cross/collector"
+        },
+        {
+            "label": "build_",
+            "type": "shell",
+            "command": "source ~/Work/export_br_toolchain;./scripts/_build_cross.sh ${command:cpptools.activeConfigName}"
+        },
+        {
+            "label": "run",
+            "command": "sh",
+            "args": [
+                "scripts/remote_run.sh",
+                "${input:remote_ip}",
+                "${input:debug_port}"    
+            ],
+            "type": "shell",
+            "options": {
+                "tasksHere": {
+                    "display": true
+                }
+            }
+        },
+
+        {
+            "label": "build_rpi",
+            "type": "shell",
+            "command": "source ~/Work/exports_rpi_compiler;./scripts/_build_cross2.sh ${command:cpptools.activeConfigName}"
+        },
+        {
+            "label": "build_update",
+            "type": "shell",
+            "command": "pwd;cd update_build;./build_update.sh"
+        },
+        {
+            "label": "translations",
+            "type": "shell",
+            "command": "cd translate;./scan.sh"
+        },
+        {
+            "label": "remote_debug_run",
+            "command": "sh",
+            "args": [
+                "scripts/remote_debug.sh" ,
+                "${input:remote_ip}",
+                "${input:debug_port}"       
+            ],
+            "type": "shell",
+            "options": { 
+                "tasksHere": {
+                    "display": false
+                }
+            }
+        },
+        {
+            "label": "remote_debug_prepare",
+            "dependsOn": [
+                "build_",
+                "remote_debug_run"
+            ],
+            "dependsOrder": "sequence",
+            "options": {
+                "tasksHere": {
+                    "display": false
+                }
+            }
+        },
+        {
+            "label": "remote_debug_prepare_factory",
+            "dependsOn": [
+                "build factory [debug]",
+                "remote_debug_run"
+            ],
+            "dependsOrder": "sequence",
+            "options": {
+                "tasksHere": {
+                    "display": false
+                }
+            }
+        },
+
+
+        {
+            "label": "sdl_debug_prepare",
+            "dependsOrder": "sequence",
+            "type": "shell",
+            "command": "./scripts/_build.sh ${command:cpptools.activeConfigName}",
+            "options": {
+                "tasksHere": {
+                    "display": false
+                }
+            }
+        },
+        {
+            "label": "sdl_debug_prepare_factory",
+            "dependsOrder": "sequence",
+            "type": "shell",
+            "command": "./_build.sh ${command:cpptools.activeConfigName}",
+            "options": {
+                "tasksHere": {
+                    "display": false
+                }
+            }
+        }  
+    ],
+    "inputs": [
+        {
+            "id": "remote_ip",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "remote_ip"
+        },
+        {
+            "id": "debug_port",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "debug_port"
+        },
+        {
+            "id": "debug_on",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "debug_on"
+        }
+    ]
+}

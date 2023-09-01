@@ -1,0 +1,27 @@
+[
+    {
+      "name": "rPi",
+      "isTrusted": true,
+      "compilers": {
+        "C": "/home/jef/Work/tools/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-gcc",
+        "CXX": "/home/jef/Work/tools/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-g++"
+      },
+      "toolchainFile": "toolchain-rpi.cmake",
+      "preferredGenerator": {
+        "name": "Ninja"
+      } 
+    },
+    {
+        "name": "riscv32-esp-elf-gcc",
+        "isTrusted": true,
+        "compilers": {
+          "C": "/ProgramData/esp-idf-tools/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-gcc.exe",
+          "CXX": "/ProgramData/esp-idf-tools/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-g++.exe"
+        },
+        "toolchainFile": "/ProgramData/esp-idf/tools/cmake/toolchain-esp32c3.cmake",
+        "preferredGenerator": {
+          "name": "Ninja"
+        }
+      }
+]
+  

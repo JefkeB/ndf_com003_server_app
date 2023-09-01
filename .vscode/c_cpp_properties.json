@@ -1,0 +1,77 @@
+{
+    "env": {
+        // Change here for different remote target
+         "remote_debug_ip": "192.168.2.35",
+        //"remote_debug_ip": "172.19.97.148",
+        
+        "remote_debug_port": "3000",
+
+
+        "defaultIncludes": [
+            "${workspaceFolder}/**"
+        ],
+        "compilerPath": "~"
+    },
+
+    "configurations": [
+
+        {
+            "name": "App",
+
+            "includePath": [
+                "${defaultIncludes}"
+            ],
+
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "gcc-x64",
+
+            "customConfigurationVariables": { 
+                "remote_ip": "${env:remote_debug_ip}",
+                "debug_port": "${env:remote_debug_port}",
+                "debug_on" :"false"
+            }
+        },
+
+        
+        {
+            "name": "DEBUG",
+
+            "includePath": [
+                "${defaultIncludes}"
+            ],
+            
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "gcc-x64",
+
+            "customConfigurationVariables": { 
+                "remote_ip": "${env:remote_debug_ip}",
+                "debug_port": "${env:remote_debug_port}",
+                "debug_on" :"true"
+            }
+        },
+
+        {
+            "name": "FACTORY",
+
+            "includePath": [
+                "${defaultIncludes}"
+            ],
+
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "gcc-x64",
+
+            "customConfigurationVariables": { 
+                "remote_ip": "${env:remote_debug_ip}",
+                "debug_port": "${env:remote_debug_port}",
+                "debug_on" :"true"
+            }
+        }
+    ],
+    "version": 4
+}

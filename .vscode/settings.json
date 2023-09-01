@@ -1,0 +1,85 @@
+{
+    "files.associations": {
+        "optional": "c",
+        "istream": "c",
+        "ostream": "c",
+        "ratio": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "thread": "cpp",
+        "lv_group.h": "c",
+        "lv_theme.h": "c",
+        "list": "cpp",
+        "iosfwd": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "atomic": "cpp",
+        "hash_map": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "codecvt": "cpp",
+        "condition_variable": "cpp",
+        "cstdint": "cpp",
+        "deque": "cpp",
+        "map": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "iterator": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "regex": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "fstream": "cpp",
+        "initializer_list": "cpp",
+        "iomanip": "cpp",
+        "iostream": "cpp",
+        "limits": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "shared_mutex": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "cinttypes": "cpp",
+        "typeinfo": "cpp"
+    },
+
+    "cmake.configureOnOpen": false,
+    "cmake.environment": {
+        "PATH": "/home/jef/Work/comol/ndf_com_003_SOF_Collector/04-Server/01-Collector/tools:${env:PATH}"
+    },
+    "cmake.buildEnvironment": {
+    },
+
+    "cmake.cmakePath": "cmake",
+    "cmake.configureArgs": [
+        "-DCMAKE_MAKE_PROGRAM=ninja"
+    ],
+    "cmake.buildArgs": [
+        "-DCMAKE_MAKE_PROGRAM=ninja"
+    ],
+    "cmake.additionalCompilerSearchDirs": [
+        "home/jef/Work/comol/ndf_com_003_SOF_Collector/04-Server/01-Collector/tools"
+    ]
+}

@@ -1,0 +1,118 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch remote",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/app_cross/app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/app_cross",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "targetArchitecture": "arm64",
+            "preLaunchTask": "remote_debug_prepare",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerServerAddress": "${input:remote_ip}:${input:debug_port}"
+        },
+        {
+            "name": "(gdb) Launch remote FACTORY",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/app_cross/app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/app_cross",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "targetArchitecture": "arm64",
+            "preLaunchTask": "remote_debug_prepare_factory",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerServerAddress": "${input:remote_ip}:${input:debug_port}"
+        },
+
+        
+        {
+            "name": "(gdb) Launch SDL",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/app/app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/app",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "targetArchitecture": "x64",
+            "preLaunchTask": "sdl_debug_prepare",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(gdb) Launch SDL FACTORY",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/app/app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/app",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "targetArchitecture": "x64",
+            "preLaunchTask": "build factory",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "remote_ip",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "remote_ip"
+        },
+        {
+            "id": "debug_port",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "debug_port"
+        },
+        {
+            "id": "debug_on",
+            "type": "command",
+            "command": "cpptools.activeConfigCustomVariable",
+            "args": "debug_on"
+        }
+    ]
+}
